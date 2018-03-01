@@ -1,42 +1,45 @@
 document.addEventListener('DOMContentLoaded', startGame)
 
 // Define your `board` object here!
-var board = {
-cells: [
-        {
-          row:0,
-          col:0,
-          isMine: true,
-          isMarked: false,
-          hidden: true,
-          surroundingMines: 0
-        },
-        {
-          row:0,
-          col:1,
-          isMine: false,
-          isMarked: false,
-          hidden: true,
-          surroundingMines: 0
-        },
-        {
-          row:2,
-          col:0,
-          isMine: false,
-          isMarked: false,
-          hidden: true,
-          surroundingMines: 0
-        },
-        {
-          row:2,
-          col:1,
-          isMine: false,
-          isMarked: false,
-          hidden: true,
-          surroundingMines: 0
-        }
-      ]
-}
+    var board = {
+      cells: [
+      {
+        row:0,
+        col:0,
+        isMine: Boolean(Math.floor(Math.random() * 4)),
+        isMarked:false,
+        hidden: true,
+        surroundingMines:0
+      },
+      {
+        row:0,
+        col:1,
+        isMine: Boolean(Math.floor(Math.random() * 4)),
+        isMarked:false,
+        hidden: true,
+        surroundingMines:0
+      },
+      {
+        row:1,
+        col:0,
+        isMine: Boolean(Math.floor(Math.random() * 2)),
+        isMarked:false,
+        hidden: true,
+        surroundingMines:0
+      },
+      {
+        row:1,
+        col:1,
+        isMine:Boolean(Math.floor(Math.random() * 4)),
+        isMarked:false,
+        hidden: true,
+        surroundingMines:0
+      }
+    ]
+  }
+
+
+
 
 function startGame () {
   // Don't remove this function call: it makes the game work!
@@ -77,10 +80,10 @@ for(var i=0; i<board.cells.length; i++){
 // It will return cell objects in an array. You should loop through
 // them, counting the number of times `cell.isMine` is true.
 function countSurroundingMines (cell) {
-  var surrounding = lib.getSurroundingCells(cell.row, cell.col);
+  var surroundingMines = lib.getSurroundingCells(cell.row, cell.col);
 var count = 0;
-  for (var i=0; i<surrounding.length; i++) {
-    if (surrounding[i].isMine) {
+  for (var i=0; i<surroundingMines.length; i++) {
+    if (surroundingMines[i].isMine) {
       count++;
     }
   }
